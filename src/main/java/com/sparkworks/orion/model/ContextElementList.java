@@ -1,0 +1,50 @@
+package com.sparkworks.orion.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import java.util.List;
+
+/**
+ * @author Dimitrios Amaxilatis.
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+public class ContextElementList {
+    List<OrionContextElementWrapper> contextResponses;
+    StatusCode statusCode;
+    StatusCode errorCode;
+
+    public List<OrionContextElementWrapper> getContextResponses() {
+        return contextResponses;
+    }
+
+    public void setContextResponses(List<OrionContextElementWrapper> contextResponses) {
+        this.contextResponses = contextResponses;
+    }
+
+    public StatusCode getStatusCode() {
+        return statusCode;
+    }
+
+    public void setStatusCode(StatusCode statusCode) {
+        this.statusCode = statusCode;
+    }
+
+    public StatusCode getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(StatusCode errorCode) {
+        this.errorCode = errorCode;
+    }
+
+    @Override
+    public String toString() {
+        return "ContextElementList{" +
+                "statusCode=" + statusCode +
+                '}';
+    }
+}
