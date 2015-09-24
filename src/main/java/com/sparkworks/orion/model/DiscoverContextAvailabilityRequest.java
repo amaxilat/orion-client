@@ -14,17 +14,17 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class DiscoverContextAvailabilityRequest {
-    List<OrionContextElement> entities;
+    List<OrionQueryElement> entities;
 
     public DiscoverContextAvailabilityRequest() {
-        entities = new ArrayList<OrionContextElement>();
+        entities = new ArrayList<OrionQueryElement>();
     }
 
-    public List<OrionContextElement> getEntities() {
+    public List<OrionQueryElement> getEntities() {
         return entities;
     }
 
-    public void setEntities(List<OrionContextElement> entities) {
+    public void setEntities(List<OrionQueryElement> entities) {
         this.entities = entities;
     }
 }

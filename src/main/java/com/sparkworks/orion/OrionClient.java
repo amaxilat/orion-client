@@ -211,12 +211,24 @@ public class OrionClient {
 
     public String discoverContextAvailability(String type, String isPattern, String id) throws IOException {
         DiscoverContextAvailabilityRequest request = new DiscoverContextAvailabilityRequest();
-        OrionContextElement element = new OrionContextElement();
+        OrionQueryElement element = new OrionQueryElement();
         element.setType(type);
         element.setIsPattern(isPattern);
         element.setId(id);
         request.getEntities().add(element);
         final String response = postPath("/v1/registry/discoverContextAvailability/", new ObjectMapper().writeValueAsString(request));
+        LOGGER.trace(response);
+        return response;
+    }
+
+    public String queryContext(String type, String isPattern, String id) throws IOException {
+        DiscoverContextAvailabilityRequest request = new DiscoverContextAvailabilityRequest();
+        OrionQueryElement element = new OrionQueryElement();
+        element.setType(type);
+        element.setIsPattern(isPattern);
+        element.setId(id);
+        request.getEntities().add(element);
+        final String response = postPath("/v1/queryContext/", new ObjectMapper().writeValueAsString(request));
         LOGGER.trace(response);
         return response;
     }
