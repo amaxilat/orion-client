@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<rss version="0.91">
+  <channel>
+    <title>Sparkworks Orion Context Broker Client - Checkstyle report</title>
+    <link>https://github.com/amaxilat/orion-client</link>
+    <description>Sparkworks Orion Context Broker Client - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2015</copyright>
+    <item>
+      <title>File: 16,
+             Errors: 483,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>https://github.com/amaxilat/orion-client/checkstyle.html</link>
+      <description>
+        <p>Click <a href="https://github.com/amaxilat/orion-client/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.OrionContextElementWrapper.java">com/sparkworks/orion/model/OrionContextElementWrapper.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  21
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.OrionQueryElement.java">com/sparkworks/orion/model/OrionQueryElement.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.subscribe.OrionEntity.java">com/sparkworks/orion/model/subscribe/OrionEntity.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.OrionClient.java">com/sparkworks/orion/OrionClient.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  96
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.ContextElementList.java">com/sparkworks/orion/model/ContextElementList.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  28
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.OrionContextElementOperation.java">com/sparkworks/orion/model/OrionContextElementOperation.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  19
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.util.SensorMLTypes.java">com/sparkworks/orion/util/SensorMLTypes.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  24
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.DiscoverContextAvailabilityRequest.java">com/sparkworks/orion/model/DiscoverContextAvailabilityRequest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  9
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.SubscriptionResponse.java">com/sparkworks/orion/model/SubscriptionResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  29
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.subscribe.SubscriptionResponse.java">com/sparkworks/orion/model/subscribe/SubscriptionResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.subscribe.SubscribeContextAvailabilityRequest.java">com/sparkworks/orion/model/subscribe/SubscribeContextAvailabilityRequest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  41
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.subscribe.NotifyConditions.java">com/sparkworks/orion/model/subscribe/NotifyConditions.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  23
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.OrionContextElement.java">com/sparkworks/orion/model/OrionContextElement.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  38
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.StatusCode.java">com/sparkworks/orion/model/StatusCode.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  27
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.AttributeObject.java">com/sparkworks/orion/model/AttributeObject.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  37
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.subscribe.SubscribeResponse.java">com/sparkworks/orion/model/subscribe/SubscribeResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  20
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+
