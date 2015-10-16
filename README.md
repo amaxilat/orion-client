@@ -4,6 +4,9 @@
 
 [checkstyle](https://amaxilat.github.io/orion-client/javadoc/checkstyle.html)
 
+## Javadoc
+
+The latest Javadoc is available [here](https://amaxilat.github.io/ehr_client/javadoc/apidocs/).
 # orion-client
 
 Java Client for the Orion Context Broker Publish/Subscribe Context Broker GE, providing the NGSI9 and NGSI10 interfaces. Using these interfaces, the clients can do several operations:
