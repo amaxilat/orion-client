@@ -16,10 +16,8 @@ import javax.ws.rs.client.Invocation;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * A client class to interact with an Orion Context Broker.
@@ -31,6 +29,8 @@ public class OrionClient {
      * a log4j logger to print messages.
      */
     protected static final Logger LOGGER = Logger.getLogger(OrionClient.class);
+    private static final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+
     private final String token;
     private String serverUrl;
 
@@ -42,39 +42,55 @@ public class OrionClient {
         return attribute;
     }
 
+    /**
+     * Create an attribute with an ID metadata.
+     *
+     * @param name  the name of the attribute.
+     * @param type  the type of the attribute.
+     * @param value the value of the attribute.
+     * @param id    the id metadata.
+     * @return an Orion Attribute Map.
+     */
     public static Map<String, Object> createAttributeWithMetadata(String name, String type, String value, final String id) {
-        final Map<String, Object> attribute = new HashMap<>();
-        attribute.put("name", name);
-        attribute.put("type", type);
-        attribute.put("value", value);
-
-        final List<Map<String, String>> metadatas = new ArrayList<>();
-        metadatas.add(createMetadata("ID", "string", id));
-        attribute.put("metadatas", metadatas);
-        return attribute;
+        return createAttributeWithMetadata(name, type, value, "ID", "string", id);
     }
 
-    public static Map<String, Object> createAttributeWithTimeInstant(String name, String type, String value, final String timeInstant) {
-        final Map<String, Object> attribute = new HashMap<>();
-        attribute.put("name", name);
-        attribute.put("type", type);
-        attribute.put("value", value);
-
-        final List<Map<String, String>> metadatas = new ArrayList<>();
-        metadatas.add(createMetadata("TimeInstant", "ISO8601", timeInstant));
-        attribute.put("metadatas", metadatas);
-        return attribute;
+    /**
+     * Create an attribute with a TimeInstant metadata.
+     *
+     * @param name  the name of the attribute.
+     * @param type  the type of the attribute.
+     * @param value the value of the attribute.
+     * @param date  the time instant to be added.
+     * @return an Orion Attribute Map.
+     */
+    public static Map<String, Object> createAttributeWithTimeInstant(String name, String type, String value, final Date date) {
+        return createAttributeWithMetadata(name, type, value, "TimeInstant", "ISO8601", df.format(date));
     }
 
-
+    /**
+     * Create an attribute with a Code metadata.
+     *
+     * @param name  the name of the attribute.
+     * @param type  the type of the attribute.
+     * @param value the value of the attribute.
+     * @param code  the unit of measurement to be added.
+     * @return an Orion Attribute Map.
+     */
     public static Map<String, Object> createAttributeWithCode(String name, String type, String value, final String code) {
+        return createAttributeWithMetadata(name, type, value, "code", "", code);
+    }
+
+    private static Map<String, Object> createAttributeWithMetadata(
+            final String name, final String type, final String value,
+            final String metadataName, final String metadataType, final String metadataValue) {
         final Map<String, Object> attribute = new HashMap<>();
         attribute.put("name", name);
         attribute.put("type", type);
         attribute.put("value", value);
 
         final List<Map<String, String>> metadatas = new ArrayList<>();
-        metadatas.add(createMetadata("code", "", code));
+        metadatas.add(createMetadata(metadataName, metadataType, metadataValue));
         attribute.put("metadatas", metadatas);
         return attribute;
     }
@@ -96,6 +112,9 @@ public class OrionClient {
     public OrionClient(final String token) {
         this.token = token;
         this.serverUrl = "http://orion.lab.fi-ware.org:1026/";
+
+        df.setTimeZone(TimeZone.getTimeZone("UTC"));
+
     }
 
     /**
@@ -107,6 +126,9 @@ public class OrionClient {
     public OrionClient(final String serverUrl, final String token) {
         this.token = token;
         this.serverUrl = serverUrl;
+
+        df.setTimeZone(TimeZone.getTimeZone("UTC"));
+
     }
 
 

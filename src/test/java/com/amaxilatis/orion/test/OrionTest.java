@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
-import java.util.TimeZone;
 
 /**
  * Tests for OrionClient.
@@ -36,11 +35,6 @@ public class OrionTest {
 
         mapper = new ObjectMapper();
 
-        TimeZone tz = TimeZone.getTimeZone("UTC");
-        df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
-        df.setTimeZone(tz);
-
-
         final Properties properties = new Properties();
         properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("connection.properties"));
 
@@ -60,7 +54,7 @@ public class OrionTest {
         element.getAttributes().add(OrionClient.createAttribute("TimeInstant", SensorMLTypes.ISO8601_TIME, df.format(new Date())));
         element.getAttributes().add(OrionClient.createAttribute("Latitud", SensorMLTypes.LATITUDE, String.valueOf(-3.79906)));
         element.getAttributes().add(OrionClient.createAttribute("Longitud", SensorMLTypes.LONGITUDE, String.valueOf(43.79906)));
-        element.getAttributes().add(OrionClient.createAttributeWithTimeInstant("temperature", SensorMLTypes.TEMPERATURE, "32", df.format(new Date())));
+        element.getAttributes().add(OrionClient.createAttributeWithTimeInstant("temperature", SensorMLTypes.TEMPERATURE, "32", new Date()));
         element.getAttributes().add(OrionClient.createAttributeWithCode("atmosphericPressure", SensorMLTypes.ATMOSPHERIC_PRESSURE, "1096.73", "bar"));
 
         LOGGER.info(element);
