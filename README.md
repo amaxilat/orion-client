@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/amaxilat/orion-client.svg?branch=master)](https://travis-ci.org/amaxilat/orion-client)
+
+[pmd](https://amaxilat.github.io/orion-client/javadoc/pmd.html)
+
+[checkstyle](https://amaxilat.github.io/orion-client/javadoc/checkstyle.html)
+
 # orion-client
 
 Java Client for the Orion Context Broker Publish/Subscribe Context Broker GE, providing the NGSI9 and NGSI10 interfaces. Using these interfaces, the clients can do several operations:
