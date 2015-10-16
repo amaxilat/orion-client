@@ -1,4 +1,4 @@
-package com.sparkworks.orion.util;
+package com.amaxilatis.orion.util;
 
 /**
  * @author Dimitrios Amaxilatis.

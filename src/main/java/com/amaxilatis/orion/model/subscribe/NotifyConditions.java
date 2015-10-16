@@ -1,4 +1,4 @@
-package com.sparkworks.orion.model.subscribe;
+package com.amaxilatis.orion.model.subscribe;
 
 import java.util.ArrayList;
 import java.util.List;

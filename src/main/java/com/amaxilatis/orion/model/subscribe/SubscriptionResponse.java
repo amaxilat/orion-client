@@ -1,4 +1,4 @@
-package com.sparkworks.orion.model.subscribe;
+package com.amaxilatis.orion.model.subscribe;
 
 /**
  * @author Dimitrios Amaxilatis.

@@ -1,4 +1,4 @@
-package com.sparkworks.orion.model;
+package com.amaxilatis.orion.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

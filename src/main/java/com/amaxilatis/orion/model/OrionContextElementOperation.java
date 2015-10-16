@@ -1,4 +1,4 @@
-package com.sparkworks.orion.model;
+package com.amaxilatis.orion.model;
 
 import java.util.ArrayList;
 import java.util.List;

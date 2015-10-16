@@ -1,8 +1,12 @@
-package com.sparkworks.orion.model;
+package com.amaxilatis.orion.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -13,12 +17,14 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-public class OrionQueryElement {
+public class OrionContextElement {
     String type;
     String isPattern;
     String id;
+    List<Map<String, Object>> attributes;
 
-    public OrionQueryElement() {
+    public OrionContextElement() {
+        attributes = new ArrayList<Map<String, Object>>();
         isPattern = "false";
     }
 
@@ -44,6 +50,14 @@ public class OrionQueryElement {
 
     public void setId(String id) {
         this.id = id.replaceAll("/", ":");
+    }
+
+    public List<Map<String, Object>> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(List<Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

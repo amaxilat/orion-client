@@ -1,12 +1,12 @@
-package com.sparkworks.orion;
+package com.amaxilatis.orion;
 
+import com.amaxilatis.orion.model.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparkworks.orion.model.*;
-import com.sparkworks.orion.model.subscribe.NotifyConditions;
-import com.sparkworks.orion.model.subscribe.OrionEntity;
-import com.sparkworks.orion.model.subscribe.SubscribeContextAvailabilityRequest;
-import com.sparkworks.orion.model.subscribe.SubscriptionResponse;
+import com.amaxilatis.orion.model.subscribe.NotifyConditions;
+import com.amaxilatis.orion.model.subscribe.OrionEntity;
+import com.amaxilatis.orion.model.subscribe.SubscribeContextAvailabilityRequest;
+import com.amaxilatis.orion.model.subscribe.SubscriptionResponse;
 import org.apache.log4j.Logger;
 
 import javax.ws.rs.client.Client;

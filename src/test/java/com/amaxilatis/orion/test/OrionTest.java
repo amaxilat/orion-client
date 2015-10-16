@@ -1,10 +1,10 @@
-package com.sparkworks.orion.test;
+package com.amaxilatis.orion.test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparkworks.orion.OrionClient;
-import com.sparkworks.orion.model.OrionContextElement;
-import com.sparkworks.orion.model.OrionContextElementWrapper;
-import com.sparkworks.orion.util.SensorMLTypes;
+import com.amaxilatis.orion.OrionClient;
+import com.amaxilatis.orion.model.OrionContextElement;
+import com.amaxilatis.orion.model.OrionContextElementWrapper;
+import com.amaxilatis.orion.util.SensorMLTypes;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.junit.Before;
