@@ -60,7 +60,8 @@ public class OrionTest {
         element.getAttributes().add(OrionClient.createAttribute("TimeInstant", SensorMLTypes.ISO8601_TIME, df.format(new Date())));
         element.getAttributes().add(OrionClient.createAttribute("Latitud", SensorMLTypes.LATITUDE, String.valueOf(-3.79906)));
         element.getAttributes().add(OrionClient.createAttribute("Longitud", SensorMLTypes.LONGITUDE, String.valueOf(43.79906)));
-        element.getAttributes().add(OrionClient.createAttributeWithCode("atmosphericPressure", SensorMLTypes.ATMOSPHERIC_PRESSURE, "1096.73", df.format(new Date())));
+        element.getAttributes().add(OrionClient.createAttributeWithTimeInstant("temperature", SensorMLTypes.TEMPERATURE, "32", df.format(new Date())));
+        element.getAttributes().add(OrionClient.createAttributeWithCode("atmosphericPressure", SensorMLTypes.ATMOSPHERIC_PRESSURE, "1096.73", "bar"));
 
         LOGGER.info(element);
 
