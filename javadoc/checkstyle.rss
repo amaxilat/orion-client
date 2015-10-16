@@ -19,9 +19,9 @@ under the License.
 -->
 <rss version="0.91">
   <channel>
-    <title>Sparkworks Orion Context Broker Client - Checkstyle report</title>
+    <title>Java Orion Context Broker Client - Checkstyle report</title>
     <link>https://github.com/amaxilat/orion-client</link>
-    <description>Sparkworks Orion Context Broker Client - Checkstyle report</description>
+    <description>Java Orion Context Broker Client - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2015</copyright>
     <item>
@@ -46,119 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.OrionContextElementWrapper.java">com/sparkworks/orion/model/OrionContextElementWrapper.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  21
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.OrionQueryElement.java">com/sparkworks/orion/model/OrionQueryElement.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  30
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.subscribe.OrionEntity.java">com/sparkworks/orion/model/subscribe/OrionEntity.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  30
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.OrionClient.java">com/sparkworks/orion/OrionClient.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  96
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.ContextElementList.java">com/sparkworks/orion/model/ContextElementList.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  28
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.OrionContextElementOperation.java">com/sparkworks/orion/model/OrionContextElementOperation.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  19
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.util.SensorMLTypes.java">com/sparkworks/orion/util/SensorMLTypes.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  24
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.DiscoverContextAvailabilityRequest.java">com/sparkworks/orion/model/DiscoverContextAvailabilityRequest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  9
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.SubscriptionResponse.java">com/sparkworks/orion/model/SubscriptionResponse.java</a>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.SubscriptionResponse.java">com/amaxilatis/orion/model/SubscriptionResponse.java</a>
                 </td>
                 <td>
                   0
@@ -172,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.subscribe.SubscriptionResponse.java">com/sparkworks/orion/model/subscribe/SubscriptionResponse.java</a>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.util.SensorMLTypes.java">com/amaxilatis/orion/util/SensorMLTypes.java</a>
                 </td>
                 <td>
                   0
@@ -181,12 +69,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  11
+                  24
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.subscribe.SubscribeContextAvailabilityRequest.java">com/sparkworks/orion/model/subscribe/SubscribeContextAvailabilityRequest.java</a>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.DiscoverContextAvailabilityRequest.java">com/amaxilatis/orion/model/DiscoverContextAvailabilityRequest.java</a>
                 </td>
                 <td>
                   0
@@ -195,26 +83,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  41
+                  9
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.subscribe.NotifyConditions.java">com/sparkworks/orion/model/subscribe/NotifyConditions.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  23
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.OrionContextElement.java">com/sparkworks/orion/model/OrionContextElement.java</a>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.OrionContextElement.java">com/amaxilatis/orion/model/OrionContextElement.java</a>
                 </td>
                 <td>
                   0
@@ -228,7 +102,105 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.StatusCode.java">com/sparkworks/orion/model/StatusCode.java</a>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.ContextElementList.java">com/amaxilatis/orion/model/ContextElementList.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  28
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.subscribe.SubscribeResponse.java">com/amaxilatis/orion/model/subscribe/SubscribeResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  20
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.OrionClient.java">com/amaxilatis/orion/OrionClient.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  96
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.OrionContextElementOperation.java">com/amaxilatis/orion/model/OrionContextElementOperation.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  19
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.subscribe.SubscribeContextAvailabilityRequest.java">com/amaxilatis/orion/model/subscribe/SubscribeContextAvailabilityRequest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  41
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.subscribe.SubscriptionResponse.java">com/amaxilatis/orion/model/subscribe/SubscriptionResponse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.subscribe.OrionEntity.java">com/amaxilatis/orion/model/subscribe/OrionEntity.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.StatusCode.java">com/amaxilatis/orion/model/StatusCode.java</a>
                 </td>
                 <td>
                   0
@@ -242,7 +214,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.AttributeObject.java">com/sparkworks/orion/model/AttributeObject.java</a>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.OrionQueryElement.java">com/amaxilatis/orion/model/OrionQueryElement.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.AttributeObject.java">com/amaxilatis/orion/model/AttributeObject.java</a>
                 </td>
                 <td>
                   0
@@ -256,7 +242,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.sparkworks.orion.model.subscribe.SubscribeResponse.java">com/sparkworks/orion/model/subscribe/SubscribeResponse.java</a>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.subscribe.NotifyConditions.java">com/amaxilatis/orion/model/subscribe/NotifyConditions.java</a>
                 </td>
                 <td>
                   0
@@ -265,7 +251,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  20
+                  23
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.OrionContextElementWrapper.java">com/amaxilatis/orion/model/OrionContextElementWrapper.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  21
                 </td>
               </tr>
                       </tbody>
