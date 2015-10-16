@@ -1,12 +1,12 @@
 package com.amaxilatis.orion;
 
 import com.amaxilatis.orion.model.*;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.amaxilatis.orion.model.subscribe.NotifyConditions;
 import com.amaxilatis.orion.model.subscribe.OrionEntity;
 import com.amaxilatis.orion.model.subscribe.SubscribeContextAvailabilityRequest;
 import com.amaxilatis.orion.model.subscribe.SubscriptionResponse;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 
 import javax.ws.rs.client.Client;
@@ -35,7 +35,7 @@ public class OrionClient {
     private String serverUrl;
 
     public static Map<String, Object> createAttribute(String name, String type, String value) {
-        Map<String, Object> attribute = new HashMap<String, Object>();
+        Map<String, Object> attribute = new HashMap<>();
         attribute.put("name", name);
         attribute.put("type", type);
         attribute.put("value", value);
@@ -43,24 +43,24 @@ public class OrionClient {
     }
 
     public static Map<String, Object> createAttributeWithMetadata(String name, String type, String value, final String id) {
-        final Map<String, Object> attribute = new HashMap<String, Object>();
+        final Map<String, Object> attribute = new HashMap<>();
         attribute.put("name", name);
         attribute.put("type", type);
         attribute.put("value", value);
 
-        final List<Map<String, String>> metadatas = new ArrayList<Map<String, String>>();
+        final List<Map<String, String>> metadatas = new ArrayList<>();
         metadatas.add(createMetadata("ID", "string", id));
         attribute.put("metadatas", metadatas);
         return attribute;
     }
 
     public static Map<String, Object> createAttributeWithTimeInstant(String name, String type, String value, final String timeInstant) {
-        final Map<String, Object> attribute = new HashMap<String, Object>();
+        final Map<String, Object> attribute = new HashMap<>();
         attribute.put("name", name);
         attribute.put("type", type);
         attribute.put("value", value);
 
-        final List<Map<String, String>> metadatas = new ArrayList<Map<String, String>>();
+        final List<Map<String, String>> metadatas = new ArrayList<>();
         metadatas.add(createMetadata("TimeInstant", "ISO8601", timeInstant));
         attribute.put("metadatas", metadatas);
         return attribute;
@@ -68,19 +68,19 @@ public class OrionClient {
 
 
     public static Map<String, Object> createAttributeWithCode(String name, String type, String value, final String code) {
-        final Map<String, Object> attribute = new HashMap<String, Object>();
+        final Map<String, Object> attribute = new HashMap<>();
         attribute.put("name", name);
         attribute.put("type", type);
         attribute.put("value", value);
 
-        final List<Map<String, String>> metadatas = new ArrayList<Map<String, String>>();
+        final List<Map<String, String>> metadatas = new ArrayList<>();
         metadatas.add(createMetadata("code", "", code));
         attribute.put("metadatas", metadatas);
         return attribute;
     }
 
     private static Map<String, String> createMetadata(String name, String type, String value) {
-        Map<String, String> metadata = new HashMap<String, String>();
+        Map<String, String> metadata = new HashMap<>();
         metadata.put("name", name);
         metadata.put("type", type);
         metadata.put("value", value);
@@ -128,7 +128,7 @@ public class OrionClient {
      * @param entity the text containing the entity to store.
      * @return the response string from the server.
      */
-    public final String postContextEntity(final String uri, final String entity) {
+    private final String postContextEntity(final String uri, final String entity) {
         return postPath("/v1/contextEntities/" + uri.replaceAll("/", ":"), entity);
     }
 
@@ -190,7 +190,7 @@ public class OrionClient {
         request.setReference(reference);
         request.getNotifyConditions().add(new NotifyConditions("ONCHANGE", attribute));
 
-        final String resp = getPath2("/v1/subscribeContext", request);
+        final String resp = getPathSubscription("/v1/subscribeContext", request);
         LOGGER.debug(resp);
         return new ObjectMapper().readValue(resp, SubscriptionResponse.class);
     }
@@ -239,7 +239,7 @@ public class OrionClient {
      * @param path the path to request.
      * @return the response string from the server.
      */
-    private String getPath2(final String path, final SubscribeContextAvailabilityRequest request) throws IOException {
+    private String getPathSubscription(final String path, final SubscribeContextAvailabilityRequest request) throws IOException {
         final String requestString = new ObjectMapper().writeValueAsString(request);
         final Entity payload = Entity.json(requestString);
         LOGGER.debug(requestString);
@@ -317,7 +317,6 @@ public class OrionClient {
                 .request(MediaType.APPLICATION_JSON_TYPE)
                 .header("Content-Type", "application/json")
                 .header("Accept", "application/json")
-//                .header("Accept", "application/xml")
                 .header("X-Auth-Token", token);
     }
 }

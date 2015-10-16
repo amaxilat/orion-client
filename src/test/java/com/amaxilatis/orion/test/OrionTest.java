@@ -1,10 +1,10 @@
 package com.amaxilatis.orion.test;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.amaxilatis.orion.OrionClient;
 import com.amaxilatis.orion.model.OrionContextElement;
 import com.amaxilatis.orion.model.OrionContextElementWrapper;
 import com.amaxilatis.orion.util.SensorMLTypes;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.junit.Before;
@@ -62,10 +62,9 @@ public class OrionTest {
         element.getAttributes().add(OrionClient.createAttribute("Longitud", SensorMLTypes.LONGITUDE, String.valueOf(43.79906)));
         element.getAttributes().add(OrionClient.createAttributeWithCode("atmosphericPressure", SensorMLTypes.ATMOSPHERIC_PRESSURE, "1096.73", df.format(new Date())));
 
-        final String objectString = mapper.writeValueAsString(element);
-        LOGGER.info(objectString);
+        LOGGER.info(element);
 
-        final String entity = client.postContextEntity(ENTITY_URI, objectString);
+        final String entity = client.postContextEntity(ENTITY_URI, element);
         LOGGER.info(entity);
     }
 
