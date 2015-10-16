@@ -100,7 +100,7 @@
     <distributionManagement>
         <snapshotRepository>
             <id>sparkworks</id>
-            <url>http://195.220.224.69:8082/nexus/content/repositories/snapshots</url>
+            <url>http://nexus.sparkworks.net/nexus/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 </project>
