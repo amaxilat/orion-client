@@ -24,5 +24,5 @@ The latest Javadoc is available [here](https://amaxilat.github.io/orion-client/j
 ## Post Context Entity to Context Broker
     client.postContextEntity("urn:my:entity", objectString);
 
-## Post Context Entity to Context Broker
+## Get Context Entity from Context Broker
     client.getContextEntity("urn:my:entity");
