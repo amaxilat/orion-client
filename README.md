@@ -26,3 +26,19 @@ The latest Javadoc is available [here](https://amaxilat.github.io/orion-client/j
 
 ## Get Context Entity from Context Broker
     client.getContextEntity("urn:my:entity");
+    
+### Using this library from maven
+    
+    <repositories>
+        <repository>
+            <id>sparkworks</id>
+            <url>http://nexus.sparkworks.net/nexus/content/repositories/snapshots</url>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>com.amaxilatis</groupId>
+            <artifactId>orion-client</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
