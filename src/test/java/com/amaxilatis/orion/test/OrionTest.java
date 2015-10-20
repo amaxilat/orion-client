@@ -1,8 +1,8 @@
 package com.amaxilatis.orion.test;
 
 import com.amaxilatis.orion.OrionClient;
+import com.amaxilatis.orion.model.ContextElementList;
 import com.amaxilatis.orion.model.OrionContextElement;
-import com.amaxilatis.orion.model.OrionContextElementWrapper;
 import com.amaxilatis.orion.util.SensorMLTypes;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.BasicConfigurator;
@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
+import java.util.TimeZone;
 
 /**
  * Tests for OrionClient.
@@ -32,6 +33,10 @@ public class OrionTest {
     @Before
     public void setUp() throws Exception {
         BasicConfigurator.configure();
+
+        TimeZone tz = TimeZone.getTimeZone("UTC");
+        df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+        df.setTimeZone(tz);
 
         mapper = new ObjectMapper();
 
@@ -65,8 +70,8 @@ public class OrionTest {
 
     @Test
     public void testGetElement() throws IOException {
-        final OrionContextElementWrapper entity = client.getContextEntity(ENTITY_URI);
-        LOGGER.info(entity);
+        final ContextElementList entity = client.listContextEntities();
+        LOGGER.info(entity.getContextResponses().size());
     }
 }
 

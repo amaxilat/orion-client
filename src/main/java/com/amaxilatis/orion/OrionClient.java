@@ -81,7 +81,19 @@ public class OrionClient {
         return createAttributeWithMetadata(name, type, value, "code", "", code);
     }
 
-    private static Map<String, Object> createAttributeWithMetadata(
+    public static Map<String, Object> createAttributeWithMetadata(
+            final String name, final String type, final String value,
+            List<Map<String, String>> metadatas) {
+        final Map<String, Object> attribute = new HashMap<>();
+        attribute.put("name", name);
+        attribute.put("type", type);
+        attribute.put("value", value);
+
+        attribute.put("metadatas", metadatas);
+        return attribute;
+    }
+
+    public static Map<String, Object> createAttributeWithMetadata(
             final String name, final String type, final String value,
             final String metadataName, final String metadataType, final String metadataValue) {
         final Map<String, Object> attribute = new HashMap<>();
@@ -95,7 +107,7 @@ public class OrionClient {
         return attribute;
     }
 
-    private static Map<String, String> createMetadata(String name, String type, String value) {
+    public static Map<String, String> createMetadata(String name, String type, String value) {
         Map<String, String> metadata = new HashMap<>();
         metadata.put("name", name);
         metadata.put("type", type);
