@@ -3,6 +3,7 @@ package com.amaxilatis.orion.test;
 import com.amaxilatis.orion.OrionClient;
 import com.amaxilatis.orion.model.ContextElementList;
 import com.amaxilatis.orion.model.OrionContextElement;
+import com.amaxilatis.orion.model.OrionContextElementWrapper;
 import com.amaxilatis.orion.util.SensorMLTypes;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.BasicConfigurator;
@@ -69,9 +70,15 @@ public class OrionTest {
     }
 
     @Test
-    public void testGetElement() throws IOException {
-        final ContextElementList entity = client.listContextEntities();
-        LOGGER.info(entity.getContextResponses().size());
+    public void testDeleteElementsById() throws IOException {
+        final ContextElementList elementList = client.listContextEntities();
+        for (final OrionContextElementWrapper orionContextElementWrapper : elementList.getContextResponses()) {
+            final OrionContextElement element = orionContextElementWrapper.getContextElement();
+            if (element.getId().contains("london")) {
+                LOGGER.info(element.getId());
+                client.deleteFromContextEntity(element.getId(), element);
+            }
+        }
     }
 }
 
