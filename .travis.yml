@@ -1,5 +1,11 @@
 language: java
 
+
+env:
+  global:
+    - SONATYPE_USERNAME=deployment
+    - secure: "pzzmQi3FQWcHhTrbtH9H1Dsz1PKexyHFd2GMNzqdKXhpX/I62npJZF5Po3SMIL0YluhPn0FDp4RnZwWBkfoP9yBoWldZjDWNX4Fqrvvh629CDS/xRdW8mWpGNzz3XG0SrzM0jCsBnLHaD7nILThGv4mURyk+TtfKIf0VTmJbjVu4qYWGcG5qK7iL/vwBJH+WPFoIYJKlajOzcFGGGVnd6yAjXMI/Rn3I3Wa9/CBKfD/+vk2JiHLEOS3rIO5PEwJkn6BIKETCZBna1k8jzT5cFeKlE9xEUlodUCctFlPEJLwxn6z6wU0Pm117n0z6NaP6t002hVOFYa4ICK/g3Hd2pORvBGi7XiS9vmHMPl9badyxdgw0Epjc3pEgjoIuminWYURdsMK0y3WIdnKdF0siCzRIMOqbKhLAeZOUiWzV4iMss8Skxt+cJVurcZRlJmQnu1wpuNeQQbT1iG7T7owh38NuCICaBhNWmZ4Fto4YZhoZ25o8Sz+1BXX0/rf+TILuwyL9FTqcexfVQk6ea7J7sJexD1G+FnL784o8hMr6kew6NI+4bobWaGh5fxvbKM9/DOkK1hhQeXKPEnb3Q8zNrSQ0ru4sZs3w9p/enaC/29JB7PehKCRYXcepDCnEmpxp3bWmiV6sV/3+YZEZ8HwO6ZG+fXJlQ5e/D1OizbV5mfM="
+
 jdk:
   - oraclejdk8
 
@@ -8,3 +14,4 @@ script: mvn clean install javadoc:javadoc pmd:pmd checkstyle:checkstyle site:sit
 
 after_success:
   - .utility/push-javadoc-to-gh-page.sh
+  - mvn clean deploy
