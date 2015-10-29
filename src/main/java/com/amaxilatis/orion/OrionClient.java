@@ -33,6 +33,8 @@ public class OrionClient {
 
     private final String token;
     private String serverUrl;
+    private String service;
+    private String servicePath;
 
     public static Map<String, Object> createAttribute(String name, String type, String value) {
         Map<String, Object> attribute = new HashMap<>();
@@ -124,6 +126,8 @@ public class OrionClient {
     public OrionClient(final String token) {
         this.token = token;
         this.serverUrl = "http://orion.lab.fi-ware.org:1026/";
+        this.service = null;
+        this.servicePath = null;
 
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
@@ -138,6 +142,41 @@ public class OrionClient {
     public OrionClient(final String serverUrl, final String token) {
         this.token = token;
         this.serverUrl = serverUrl;
+
+        df.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+    }
+
+    /**
+     * Creates a new OrionClient.
+     *
+     * @param serverUrl the url of the server to interact with.
+     * @param token     the token to be used for authorization.
+     * @param service   the service to add as header.
+     */
+    public OrionClient(final String serverUrl, final String token, final String service) {
+        this.token = token;
+        this.serverUrl = serverUrl;
+        this.service = service;
+        this.servicePath = null;
+
+        df.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+    }
+
+    /**
+     * Creates a new OrionClient.
+     *
+     * @param serverUrl   the url of the seerver to interact with.
+     * @param token       the token to be used for authorization.
+     * @param service     the service to add as header.
+     * @param servicePath the servicePath to add as header.
+     */
+    public OrionClient(final String serverUrl, final String token, final String service, final String servicePath) {
+        this.token = token;
+        this.serverUrl = serverUrl;
+        this.service = service;
+        this.servicePath = servicePath;
 
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
@@ -346,11 +385,19 @@ public class OrionClient {
     private Invocation.Builder getClientForPath(final String path) {
         Client client = ClientBuilder.newClient();
         LOGGER.debug("path: " + path);
-        return client.target(serverUrl)
+        Invocation.Builder tmpClient = client.target(serverUrl)
                 .path(path)
                 .request(MediaType.APPLICATION_JSON_TYPE)
                 .header("Content-Type", "application/json")
                 .header("Accept", "application/json")
                 .header("X-Auth-Token", token);
+
+        if (service != null) {
+            tmpClient.header("Fiware-Service", service);
+        }
+        if (servicePath != null) {
+            tmpClient.header("Fiware-ServicePath", servicePath);
+        }
+        return tmpClient;
     }
 }
