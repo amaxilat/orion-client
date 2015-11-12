@@ -29,7 +29,7 @@ public class OrionClient {
      * a log4j logger to print messages.
      */
     protected static final Logger LOGGER = Logger.getLogger(OrionClient.class);
-    private static final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+    private static final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
     private final String token;
     private String serverUrl;
