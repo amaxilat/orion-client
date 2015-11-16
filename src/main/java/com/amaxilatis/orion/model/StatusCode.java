@@ -39,6 +39,14 @@ public class StatusCode {
         return details;
     }
 
+    public Long getCount() {
+        if (details != null && details.contains("Count: ")) {
+            return Long.parseLong(details.replaceAll("Count: ", ""));
+        }
+        return null;
+    }
+
+
     public void setDetails(String details) {
         this.details = details;
     }

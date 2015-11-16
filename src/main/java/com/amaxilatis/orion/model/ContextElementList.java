@@ -41,6 +41,15 @@ public class ContextElementList {
         this.errorCode = errorCode;
     }
 
+    public boolean hasMore(final long offset) {
+        try {
+            System.out.println("Offset:" + offset + " count:" + getErrorCode().getCount());
+            return getErrorCode().getCount() > offset;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     @Override
     public String toString() {
         return "ContextElementList{" +

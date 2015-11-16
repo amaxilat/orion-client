@@ -9,10 +9,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
@@ -224,8 +221,13 @@ public class OrionClient {
      * @return the response string from the server.
      */
     public String deleteFromContextEntity(String uri, OrionContextElement entity) throws JsonProcessingException {
+        OrionContextElement element1 = new OrionContextElement();
+        element1.setType(entity.getType());
+        element1.setIsPattern("false");
+        element1.setId(entity.getId());
+
         OrionContextElementOperation operation = new OrionContextElementOperation();
-        operation.getContextElements().add(entity);
+        operation.getContextElements().add(element1);
         operation.setUpdateAction("DELETE");
         return postPath("/v1/updateContext", new ObjectMapper().writeValueAsString(operation));
     }
@@ -264,15 +266,18 @@ public class OrionClient {
         request.getNotifyConditions().add(new NotifyConditions("ONCHANGE", attribute));
 
         final String resp = getPathSubscription("/v1/subscribeContext", request);
-        LOGGER.debug(resp);
+        LOGGER.trace(resp);
         return new ObjectMapper().readValue(resp, SubscriptionResponse.class);
     }
 
     public ContextElementList listContextEntities() throws IOException {
-        final String response = getPath("/v1/contextEntities");
-        LOGGER.debug(response);
-        return new ObjectMapper().readValue(response, ContextElementList.class);
+        return listContextEntities(0);
+    }
 
+    public ContextElementList listContextEntities(final long offset) throws IOException {
+        final String response = getPath("/v1/contextEntities", offset);
+        LOGGER.trace(response);
+        return new ObjectMapper().readValue(response, ContextElementList.class);
     }
 
     public String getContextEntityRegistry(final String uri) throws IOException {
@@ -333,7 +338,18 @@ public class OrionClient {
      * @return the response string from the server.
      */
     private String getPath(final String path) {
-        final Response response = getClientForPath(path).get();
+        return getPath(path, 0);
+    }
+
+    /**
+     * Execute a get request to the specified path.
+     *
+     * @param path   the path to request.
+     * @param offset the offset for a list response.
+     * @return the response string from the server.
+     */
+    private String getPath(final String path, final long offset) {
+        final Response response = getClientForPath(path, offset).get();
 
         LOGGER.debug("status: " + response.getStatus());
         LOGGER.debug("headers: " + response.getHeaders());
@@ -383,11 +399,32 @@ public class OrionClient {
      * @return a client to execute an http request.
      */
     private Invocation.Builder getClientForPath(final String path) {
+        return getClientForPath(path, 0);
+    }
+
+    /**
+     * Get a client to the orion context broker for the selected path.
+     *
+     * @param path   the path to request.
+     * @param offset the offset for a list response.
+     * @return a client to execute an http request.
+     */
+    private Invocation.Builder getClientForPath(final String path, final long offset) {
         Client client = ClientBuilder.newClient();
+
         LOGGER.debug("path: " + path);
-        Invocation.Builder tmpClient = client.target(serverUrl)
+
+        WebTarget webTarget = client.target(serverUrl)
                 .path(path)
-                .request(MediaType.APPLICATION_JSON_TYPE)
+                .queryParam("limit", 100)
+                .queryParam("details", "on");
+
+        if (offset > 0) {
+            LOGGER.debug("Offset:" + offset);
+            webTarget = webTarget.queryParam("offset", offset);
+        }
+
+        final Invocation.Builder tmpClient = webTarget.request(MediaType.APPLICATION_JSON_TYPE)
                 .header("Content-Type", "application/json")
                 .header("Accept", "application/json")
                 .header("X-Auth-Token", token);
@@ -398,6 +435,7 @@ public class OrionClient {
         if (servicePath != null) {
             tmpClient.header("Fiware-ServicePath", servicePath);
         }
+
         return tmpClient;
     }
 }
