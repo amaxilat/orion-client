@@ -16,10 +16,21 @@ Java Client for the Orion Context Broker Publish/Subscribe Context Broker GE, pr
 
 The latest Javadoc is available [here](https://amaxilat.github.io/orion-client/javadoc/apidocs/).
 
-## Setup an Orion Context Broker Client
+## Connecting to an Orion Context Broker Client
+
+To connect to a specific Orion CB you need to create and instance of the OrionClient class and provide the url of the server and the access token if security is used. When you have no security setup you can pass an empty String to it.
+
     String serverUrl="http://orion.lab.fi-ware.org:1026/";
     String token="#your token here#";
     OrionClient client = new OrionClient(serverUrl, accessToken);
+
+### Connecting to a specific Service and Service Path
+
+When you run multiple services on the same Orion CB you need to specify the Service and ServicePath headers you  need to connect to. To do this you need to use a different OrionClient constructor, where the last two arguments are the Service name and Service path to be used in every request.
+
+    String serverUrl="http://orion.lab.fi-ware.org:1026/";
+    String token="#your token here#";
+    OrionClient client = new OrionClient(serverUrl, accessToken,"MyService","/myServicePath");
 
 ## Post Context Entity to Context Broker
     client.postContextEntity("urn:my:entity", objectString);
