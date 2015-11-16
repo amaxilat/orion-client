@@ -16,16 +16,49 @@ Java Client for the Orion Context Broker Publish/Subscribe Context Broker GE, pr
 
 The latest Javadoc is available [here](https://amaxilat.github.io/orion-client/javadoc/apidocs/).
 
-## Setup an Orion Context Broker Client
+## Connecting to an Orion Context Broker Client
+
+To connect to a specific Orion CB you need to create and instance of the OrionClient class and provide the url of the server and the access token if security is used. When you have no security setup you can pass an empty String to it.
+
     String serverUrl="http://orion.lab.fi-ware.org:1026/";
     String token="#your token here#";
     OrionClient client = new OrionClient(serverUrl, accessToken);
+
+### Connecting to a specific Service and Service Path
+
+When you run multiple services on the same Orion CB you need to specify the Service and ServicePath headers you  need to connect to. To do this you need to use a different OrionClient constructor, where the last two arguments are the Service name and Service path to be used in every request.
+
+    String serverUrl="http://orion.lab.fi-ware.org:1026/";
+    String token="#your token here#";
+    OrionClient client = new OrionClient(serverUrl, accessToken,"MyService","/myServicePath");
 
 ## Post Context Entity to Context Broker
     client.postContextEntity("urn:my:entity", objectString);
 
 ## Get Context Entity from Context Broker
     client.getContextEntity("urn:my:entity");
+    
+## Pagination in the Orion Context Broker requests
+By default Orion CB provides only a limited number of context elements in each response for performance reasons. 
+The Orion CB pagination works by providing an offset to the starting element to be delivered. As a result to request, for example, 34 elements from an Orion CB you need to make two requests, one for the first 20 and a second one for the rest. To achive this you need to pass the starting offset to the respective OrionClient method call.
+
+
+    final ContextElementList elementListFirst = client.listContextEntities();
+    final ContextElementList elementListRest = client.listContextEntities(20);
+    
+Additionally to check of there are any more elements that you have not received OrionClient offers the 'hasMore' method in the 'ContextElementList' that given an offset returns 'true' when there are more elements to be requested. 
+
+To request all available elements of an Orion CB you need to implement something similar to the following:
+
+    long offset = 0;
+    ContextElementList elementList =  client.listContextEntities(offset);
+    //do something
+    while (elementList.hasMore(offset)) {
+        elementList = client.listContextEntities(offset);
+        //do something
+        offset += elementList.getContextResponses().size();
+    }
+
     
 ### Using this library from maven
     

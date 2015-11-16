@@ -15,16 +15,18 @@ import java.util.List;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class SubscribeContextAvailabilityRequest {
     List<OrionEntity> entities;
-    List<String> attributes;
     String reference;
     String duration;
     List<NotifyConditions> notifyConditions;
+    String throttling;
+    List<String> attributes;
 
     public SubscribeContextAvailabilityRequest() {
         this.entities = new ArrayList<OrionEntity>();
         this.attributes = new ArrayList<String>();
         this.duration = "P1M";
         this.notifyConditions = new ArrayList<NotifyConditions>();
+        this.throttling="PT1S";
     }
 
     public List<OrionEntity> getEntities() {
@@ -65,5 +67,25 @@ public class SubscribeContextAvailabilityRequest {
 
     public void setNotifyConditions(List<NotifyConditions> notifyConditions) {
         this.notifyConditions = notifyConditions;
+    }
+
+    public String getThrottling() {
+        return throttling;
+    }
+
+    public void setThrottling(String throttling) {
+        this.throttling = throttling;
+    }
+
+    @Override
+    public String toString() {
+        return "SubscribeContextAvailabilityRequest{" +
+                "entities=" + entities +
+                ", attributes=" + attributes +
+                ", reference='" + reference + '\'' +
+                ", duration='" + duration + '\'' +
+                ", notifyConditions=" + notifyConditions +
+                ", throttling='" + throttling + '\'' +
+                '}';
     }
 }

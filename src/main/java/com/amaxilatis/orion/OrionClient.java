@@ -26,7 +26,7 @@ public class OrionClient {
      * a log4j logger to print messages.
      */
     protected static final Logger LOGGER = Logger.getLogger(OrionClient.class);
-    private static final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+    private static final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
     private final String token;
     private String serverUrl;
@@ -258,17 +258,55 @@ public class OrionClient {
     }
 
     public SubscriptionResponse subscribeChange(final OrionEntity entity, final String attribute, final String reference) throws IOException {
-
         final SubscribeContextAvailabilityRequest request = new SubscribeContextAvailabilityRequest();
         request.getEntities().add(entity);
         request.getAttributes().add(attribute);
         request.setReference(reference);
         request.getNotifyConditions().add(new NotifyConditions("ONCHANGE", attribute));
-
         final String resp = getPathSubscription("/v1/subscribeContext", request);
         LOGGER.trace(resp);
         return new ObjectMapper().readValue(resp, SubscriptionResponse.class);
     }
+
+
+ /*   {
+        "entities": [
+        {
+            "type": “urn:oc:entityType:iotdevice”,
+            "isPattern": “false”,
+            "id": "urn:oc:entity:santander:environmental:fixed:667”
+        }
+        ],
+        "attributes": [ ],
+        "reference": "http://localhost:5050/notify",
+            "duration": "P20Y",
+            "notifyConditions": [
+        {
+            "type": "ONCHANGE",
+                "condValues": [
+            "TimeInstant"
+            ]
+        }
+        ],
+        "throttling": "PT1S"
+    }*/
+
+    public SubscriptionResponse subscribeChange(final OrionEntity entity, final String[] attributes, final String reference, final String[] conditions) throws IOException {
+        final SubscribeContextAvailabilityRequest request = new SubscribeContextAvailabilityRequest();
+        request.getEntities().add(entity);
+        if (attributes==null ||attributes.length ==0 )
+            request.setAttributes(null);
+        else
+        request.getAttributes().addAll(Arrays.<String>asList(attributes));
+        request.setReference(reference);
+        for (String cond : conditions)
+            request.getNotifyConditions().add(new NotifyConditions("ONCHANGE", cond));
+        LOGGER.debug(request.toString());
+        LOGGER.info(new ObjectMapper().writeValueAsString(request));
+        final String resp = getPathSubscription("/v1/subscribeContext", request);
+        LOGGER.debug(resp);
+        return new ObjectMapper().readValue(resp, SubscriptionResponse.class);
+     }
 
     public ContextElementList listContextEntities() throws IOException {
         return listContextEntities(0);
