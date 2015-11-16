@@ -38,6 +38,28 @@ When you run multiple services on the same Orion CB you need to specify the Serv
 ## Get Context Entity from Context Broker
     client.getContextEntity("urn:my:entity");
     
+## Pagination in the Orion Context Broker requests
+By default Orion CB provides only a limited number of context elements in each response for performance reasons. 
+The Orion CB pagination works by providing an offset to the starting element to be delivered. As a result to request, for example, 34 elements from an Orion CB you need to make two requests, one for the first 20 and a second one for the rest. To achive this you need to pass the starting offset to the respective OrionClient method call.
+
+
+    final ContextElementList elementListFirst = client.listContextEntities();
+    final ContextElementList elementListRest = client.listContextEntities(20);
+    
+Additionally to check of there are any more elements that you have not received OrionClient offers the 'hasMore' method in the 'ContextElementList' that given an offset returns 'true' when there are more elements to be requested. 
+
+To request all available elements of an Orion CB you need to implement something similar to the following:
+
+    long offset = 0;
+    ContextElementList elementList =  client.listContextEntities(offset);
+    //do something
+    while (elementList.hasMore(offset)) {
+        elementList = client.listContextEntities(offset);
+        //do something
+        offset += elementList.getContextResponses().size();
+    }
+
+    
 ### Using this library from maven
     
     <repositories>
