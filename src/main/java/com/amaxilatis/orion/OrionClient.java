@@ -268,36 +268,18 @@ public class OrionClient {
         return new ObjectMapper().readValue(resp, SubscriptionResponse.class);
     }
 
-
- /*   {
-        "entities": [
-        {
-            "type": “urn:oc:entityType:iotdevice”,
-            "isPattern": “false”,
-            "id": "urn:oc:entity:santander:environmental:fixed:667”
-        }
-        ],
-        "attributes": [ ],
-        "reference": "http://localhost:5050/notify",
-            "duration": "P20Y",
-            "notifyConditions": [
-        {
-            "type": "ONCHANGE",
-                "condValues": [
-            "TimeInstant"
-            ]
-        }
-        ],
-        "throttling": "PT1S"
-    }*/
-
     public SubscriptionResponse subscribeChange(final OrionEntity entity, final String[] attributes, final String reference, final String[] conditions) throws IOException {
+        return subscribeChange(entity, attributes, reference, conditions, "P1M");
+    }
+
+    public SubscriptionResponse subscribeChange(final OrionEntity entity, final String[] attributes, final String reference, final String[] conditions, final String duration) throws IOException {
         final SubscribeContextAvailabilityRequest request = new SubscribeContextAvailabilityRequest();
+        request.setDuration(duration);
         request.getEntities().add(entity);
-        if (attributes==null ||attributes.length ==0 )
+        if (attributes == null || attributes.length == 0)
             request.setAttributes(null);
         else
-        request.getAttributes().addAll(Arrays.<String>asList(attributes));
+            request.getAttributes().addAll(Arrays.<String>asList(attributes));
         request.setReference(reference);
         for (String cond : conditions)
             request.getNotifyConditions().add(new NotifyConditions("ONCHANGE", cond));
@@ -306,7 +288,7 @@ public class OrionClient {
         final String resp = getPathSubscription("/v1/subscribeContext", request);
         LOGGER.debug(resp);
         return new ObjectMapper().readValue(resp, SubscriptionResponse.class);
-     }
+    }
 
     public ContextElementList listContextEntities() throws IOException {
         return listContextEntities(0);

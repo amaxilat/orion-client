@@ -24,7 +24,7 @@ public class SubscribeContextAvailabilityRequest {
     public SubscribeContextAvailabilityRequest() {
         this.entities = new ArrayList<OrionEntity>();
         this.attributes = new ArrayList<String>();
-        this.duration = "P1M";
+        this.duration = "P1D";
         this.notifyConditions = new ArrayList<NotifyConditions>();
         this.throttling="PT1S";
     }
