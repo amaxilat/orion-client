@@ -21,10 +21,10 @@ public class OrionContextElement {
     String type;
     String isPattern;
     String id;
-    List<Map<String, Object>> attributes;
+    List<Attribute> attributes;
 
     public OrionContextElement() {
-        attributes = new ArrayList<Map<String, Object>>();
+        attributes = new ArrayList<>();
         isPattern = "false";
     }
 
@@ -49,14 +49,14 @@ public class OrionContextElement {
     }
 
     public void setId(String id) {
-        this.id = id.replaceAll("/", ":");
+        this.id = id;
     }
 
-    public List<Map<String, Object>> getAttributes() {
+    public List<Attribute> getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(List<Map<String, Object>> attributes) {
+    public void setAttributes(List<Attribute> attributes) {
         this.attributes = attributes;
     }
 

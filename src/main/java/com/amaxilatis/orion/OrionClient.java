@@ -33,12 +33,8 @@ public class OrionClient {
     private String service;
     private String servicePath;
 
-    public static Map<String, Object> createAttribute(String name, String type, String value) {
-        Map<String, Object> attribute = new HashMap<>();
-        attribute.put("name", name);
-        attribute.put("type", type);
-        attribute.put("value", value);
-        return attribute;
+    public static Attribute createAttribute(String name, String type, String value) {
+        return new Attribute(name, type, value);
     }
 
     /**
@@ -50,7 +46,7 @@ public class OrionClient {
      * @param id    the id metadata.
      * @return an Orion Attribute Map.
      */
-    public static Map<String, Object> createAttributeWithMetadata(String name, String type, String value, final String id) {
+    public static Attribute createAttributeWithMetadata(String name, String type, String value, final String id) {
         return createAttributeWithMetadata(name, type, value, "ID", "string", id);
     }
 
@@ -63,7 +59,7 @@ public class OrionClient {
      * @param date  the time instant to be added.
      * @return an Orion Attribute Map.
      */
-    public static Map<String, Object> createAttributeWithTimeInstant(String name, String type, String value, final Date date) {
+    public static Attribute createAttributeWithTimeInstant(String name, String type, String value, final Date date) {
         return createAttributeWithMetadata(name, type, value, "TimeInstant", "ISO8601", df.format(date));
     }
 
@@ -76,7 +72,7 @@ public class OrionClient {
      * @param code  the unit of measurement to be added.
      * @return an Orion Attribute Map.
      */
-    public static Map<String, Object> createAttributeWithCode(String name, String type, String value, final String code) {
+    public static Attribute createAttributeWithCode(String name, String type, String value, final String code) {
         return createAttributeWithMetadata(name, type, value, "code", "", code);
     }
 
@@ -92,26 +88,18 @@ public class OrionClient {
         return attribute;
     }
 
-    public static Map<String, Object> createAttributeWithMetadata(
+    public static Attribute createAttributeWithMetadata(
             final String name, final String type, final String value,
             final String metadataName, final String metadataType, final String metadataValue) {
-        final Map<String, Object> attribute = new HashMap<>();
-        attribute.put("name", name);
-        attribute.put("type", type);
-        attribute.put("value", value);
+        final Attribute attribute = createAttribute(name, type, value);
 
-        final List<Map<String, String>> metadatas = new ArrayList<>();
-        metadatas.add(createMetadata(metadataName, metadataType, metadataValue));
-        attribute.put("metadatas", metadatas);
+        attribute.setMetadatas(new ArrayList<Metadata>());
+        attribute.getMetadatas().add(createMetadata(metadataName, metadataType, metadataValue));
         return attribute;
     }
 
-    public static Map<String, String> createMetadata(String name, String type, String value) {
-        Map<String, String> metadata = new HashMap<>();
-        metadata.put("name", name);
-        metadata.put("type", type);
-        metadata.put("value", value);
-        return metadata;
+    public static Metadata createMetadata(String name, String type, String value) {
+        return new Metadata(name, type, value);
     }
 
 
@@ -214,22 +202,13 @@ public class OrionClient {
     }
 
     /**
-     * Execute a delete request to the specified uri.
+     * Delete the requested context entity.
      *
-     * @param uri    the uri of the resource.
-     * @param entity the text containing the entity to store.
+     * @param uri the uri of the entity.
      * @return the response string from the server.
      */
-    public String deleteFromContextEntity(String uri, OrionContextElement entity) throws JsonProcessingException {
-        OrionContextElement element1 = new OrionContextElement();
-        element1.setType(entity.getType());
-        element1.setIsPattern("false");
-        element1.setId(entity.getId());
-
-        OrionContextElementOperation operation = new OrionContextElementOperation();
-        operation.getContextElements().add(element1);
-        operation.setUpdateAction("DELETE");
-        return postPath("/v1/updateContext", new ObjectMapper().writeValueAsString(operation));
+    public final String deleteContextEntity(final String uri) throws IOException {
+        return deletePath("/v1/contextEntities/" + uri.replaceAll("/", ":"));
     }
 
     /**
@@ -242,6 +221,29 @@ public class OrionClient {
      */
     public String deleteAttributeFromContextEntity(String uri, String attribute, String id) throws JsonProcessingException {
         return deletePath("/v1/contextEntities/" + uri + "/attributes/" + attribute + "/" + id);
+    }
+
+    /**
+     * Execute a delete request to the specified uri.
+     *
+     * @param uri       the uri of the resource.
+     * @param attribute
+     * @return the response string from the server.
+     */
+    public String deleteAttributeFromContextEntity(String uri, String attribute) throws JsonProcessingException {
+        return deletePath("/v1/contextEntities/" + uri + "/attributes/" + attribute);
+    }
+
+    /**
+     * Execute a delete request to the specified uri.
+     *
+     * @param uri           the uri of the resource.
+     * @param attribute     the attribute to delete
+     * @param metadataValue the value of the metadata
+     * @return the response string from the server.
+     */
+    public String deleteAttributeWithMetadataFromContextEntity(String uri, String attribute, final String metadataValue) throws JsonProcessingException {
+        return deletePath("/v1/contextEntities/" + uri + "/attributes/" + attribute + "/" + metadataValue);
     }
 
     /**

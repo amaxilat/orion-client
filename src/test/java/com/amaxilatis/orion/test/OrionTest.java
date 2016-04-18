@@ -76,7 +76,7 @@ public class OrionTest {
             final OrionContextElement element = orionContextElementWrapper.getContextElement();
             if (element.getId().contains("london")) {
                 LOGGER.info(element.getId());
-                client.deleteFromContextEntity(element.getId(), element);
+                client.deleteContextEntity(element.getId());
             }
         }
     }

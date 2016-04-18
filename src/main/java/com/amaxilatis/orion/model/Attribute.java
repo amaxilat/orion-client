@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Maps an Attribute Object.
  *
@@ -12,16 +15,17 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-public class AttributeObject {
+public class Attribute {
     String name;
     String type;
     String value;
+    List<Metadata> metadatas;
 
-    public AttributeObject() {
+    public Attribute() {
         //required for object mapper
     }
 
-    public AttributeObject(final String name, final String type, final String value) {
+    public Attribute(final String name, final String type, final String value) {
         this.name = name;
         this.type = type;
         this.value = value;
@@ -39,21 +43,30 @@ public class AttributeObject {
         return value;
     }
 
-    public void setName(String name) {
+    public List<Metadata> getMetadatas() {
+        return metadatas;
+    }
+
+    public void setName(final String name) {
         this.name = name;
     }
 
-    public void setType(String type) {
+    public void setType(final String type) {
         this.type = type;
     }
 
-    public void setValue(String value) {
+    public void setValue(final String value) {
         this.value = value;
+    }
+
+
+    public void setMetadatas(final List<Metadata> metadatas) {
+        this.metadatas = metadatas;
     }
 
     @Override
     public String toString() {
-        return "AttributeObject{" +
+        return "Attribute{" +
                 "name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", value='" + value + '\'' +
