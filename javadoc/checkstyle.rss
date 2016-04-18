@@ -23,10 +23,10 @@ under the License.
     <link>https://github.com/amaxilat/orion-client</link>
     <description>Java Orion Context Broker Client - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2015</copyright>
+    <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 16,
-             Errors: 570,
+      <title>File: 17,
+             Errors: 618,
              Warnings: 0,
              Infos: 0
       </title>
@@ -97,7 +97,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  38
+                  39
                 </td>
               </tr>
                           <tr>
@@ -139,7 +139,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  134
+                  142
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.Attribute.java">com/amaxilatis/orion/model/Attribute.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  41
                 </td>
               </tr>
                           <tr>
@@ -214,6 +228,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.Metadata.java">com/amaxilatis/orion/model/Metadata.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  35
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.OrionQueryElement.java">com/amaxilatis/orion/model/OrionQueryElement.java</a>
                 </td>
                 <td>
@@ -224,20 +252,6 @@ under the License.
                 </td>
                 <td>
                   30
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.AttributeObject.java">com/amaxilatis/orion/model/AttributeObject.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  37
                 </td>
               </tr>
                           <tr>
