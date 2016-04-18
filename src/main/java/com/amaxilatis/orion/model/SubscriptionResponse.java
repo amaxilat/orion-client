@@ -3,6 +3,8 @@ package com.amaxilatis.orion.model;
 import java.util.List;
 
 /**
+ * Maps the OrionContextBroker Response Status.
+ *
  * @author Dimitrios Amaxilatis.
  */
 public class SubscriptionResponse {

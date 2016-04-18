@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 /**
- * Maps an Attribute Object.
+ * Maps an Orion Context Element Metadata property.
  *
  * @author Dimitrios Amaxilatis
  */

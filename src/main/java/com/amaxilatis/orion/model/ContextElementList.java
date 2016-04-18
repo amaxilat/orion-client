@@ -7,6 +7,8 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 import java.util.List;
 
 /**
+ * Maps a List of Orion Context Elements.
+ *
  * @author Dimitrios Amaxilatis.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)

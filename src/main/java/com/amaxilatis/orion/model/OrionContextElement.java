@@ -10,7 +10,7 @@ import java.util.Map;
 
 
 /**
- * Maps an OrionContext Element.
+ * Maps an Orion Context Element.
  *
  * @author Dimitrios Amaxilatis
  */

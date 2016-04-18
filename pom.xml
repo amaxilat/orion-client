@@ -8,11 +8,9 @@
     <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Java Orion Context Broker Client</name>
-    <description>This is a java client library for the FIWARE Orion Context Broker.</description>
+    <name>Orion Context Broker Client for Java</name>
+    <description>This is a java client library for the FIWARE Orion Context Broker GE.</description>
     <url>https://github.com/amaxilat/orion-client</url>
-
-
 
     <dependencies>
         <!--#################################################################################################-->

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Maps an Attribute Object.
+ * Maps an Orion Context Element Attribute property.
  *
  * @author Dimitrios Amaxilatis
  */
