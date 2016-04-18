@@ -19,14 +19,14 @@ under the License.
 -->
 <rss version="0.91">
   <channel>
-    <title>Java Orion Context Broker Client - Checkstyle report</title>
+    <title>Orion Context Broker Client for Java - Checkstyle report</title>
     <link>https://github.com/amaxilat/orion-client</link>
-    <description>Java Orion Context Broker Client - Checkstyle report</description>
+    <description>Orion Context Broker Client for Java - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
       <title>File: 17,
-             Errors: 618,
+             Errors: 617,
              Warnings: 0,
              Infos: 0
       </title>
@@ -279,7 +279,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  21
+                  20
                 </td>
               </tr>
                       </tbody>
