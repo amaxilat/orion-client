@@ -1,5 +1,6 @@
 package com.amaxilatis.orion.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  *
  * @author Dimitrios Amaxilatis.
  */
-public class SubscriptionResponse {
+public class SubscriptionResponse implements Serializable {
     String subscriptionId;
     String originator;
     List<OrionContextElementWrapper> contextResponses;
