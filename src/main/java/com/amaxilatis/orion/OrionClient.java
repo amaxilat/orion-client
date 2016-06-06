@@ -1,9 +1,7 @@
 package com.amaxilatis.orion;
 
 import com.amaxilatis.orion.model.*;
-import com.amaxilatis.orion.model.subscribe.NotifyConditions;
-import com.amaxilatis.orion.model.subscribe.OrionEntity;
-import com.amaxilatis.orion.model.subscribe.SubscribeContextAvailabilityRequest;
+import com.amaxilatis.orion.model.subscribe.*;
 import com.amaxilatis.orion.model.subscribe.SubscriptionResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -277,14 +275,21 @@ public class OrionClient {
         if (attributes == null || attributes.length == 0)
             request.setAttributes(null);
         else
-            request.getAttributes().addAll(Arrays.<String>asList(attributes));
+            request.getAttributes().addAll(Arrays.asList(attributes));
         request.setReference(reference);
         for (String cond : conditions)
             request.getNotifyConditions().add(new NotifyConditions("ONCHANGE", cond));
         LOGGER.debug(request.toString());
         LOGGER.info(new ObjectMapper().writeValueAsString(request));
         final String resp = getPathSubscription("/v1/subscribeContext", request);
-        LOGGER.debug(resp);
+        return new ObjectMapper().readValue(resp, SubscriptionResponse.class);
+    }
+
+    public SubscriptionResponse unSubscribeChange(final String subscriptionId) throws IOException {
+        final UnSubscribeContext request = new UnSubscribeContext(subscriptionId);
+        LOGGER.debug(request.toString());
+        LOGGER.info(new ObjectMapper().writeValueAsString(request));
+        final String resp = getPathUnsubscribe("/v1/unsubscribeContext", request);
         return new ObjectMapper().readValue(resp, SubscriptionResponse.class);
     }
 
@@ -336,6 +341,26 @@ public class OrionClient {
      * @return the response string from the server.
      */
     private String getPathSubscription(final String path, final SubscribeContextAvailabilityRequest request) throws IOException {
+        final String requestString = new ObjectMapper().writeValueAsString(request);
+        final Entity payload = Entity.json(requestString);
+        LOGGER.debug(requestString);
+        LOGGER.debug(payload);
+        final Response response = getClientForPath(path).post(payload);
+
+        LOGGER.debug("status: " + response.getStatus());
+        LOGGER.debug("headers: " + response.getHeaders());
+        final String responseString = response.readEntity(String.class);
+        LOGGER.trace("responseString: " + responseString);
+        return responseString;
+    }
+
+    /**
+     * Execute a get request to the specified path.
+     *
+     * @param path the path to request.
+     * @return the response string from the server.
+     */
+    private String getPathUnsubscribe(final String path, final UnSubscribeContext request) throws IOException {
         final String requestString = new ObjectMapper().writeValueAsString(request);
         final Entity payload = Entity.json(requestString);
         LOGGER.debug(requestString);

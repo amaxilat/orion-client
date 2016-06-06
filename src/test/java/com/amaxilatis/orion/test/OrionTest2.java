@@ -1,10 +1,8 @@
 package com.amaxilatis.orion.test;
 
 import com.amaxilatis.orion.OrionClient;
-import com.amaxilatis.orion.model.OrionContextElement;
 import com.amaxilatis.orion.model.subscribe.OrionEntity;
 import com.amaxilatis.orion.model.subscribe.SubscriptionResponse;
-import com.amaxilatis.orion.util.SensorMLTypes;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
@@ -13,7 +11,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.TimeZone;
 
 /**
@@ -41,7 +38,7 @@ public class OrionTest2 {
     }
 
     @Test
-    public void testCreateSubscriptionOnChange() throws IOException {
+    public void testCreateAndDeleteSubscriptionOnChange() throws IOException {
         OrionEntity e = new OrionEntity();
         e.setId(ENTITY_URI);
         e.setIsPattern("false");
@@ -49,11 +46,12 @@ public class OrionTest2 {
         String[] attr = new String[0];
         String[] cond = new String[1];
         cond[0] = "TimeInstant";
-        SubscriptionResponse r = client.subscribeChange(e, null, "http://54.68.181.32:1026/v1/notifyContext", cond);
-        LOGGER.info(r.getSubscribeResponse().toString());
-        LOGGER.info("---");
+        SubscriptionResponse r = client.subscribeChange(e, null, "http://150.140.5.11:7000/v1/notifyContext", cond, "P1D");
+        if (r.getSubscribeResponse() != null) {
+            final String subscriptionId = r.getSubscribeResponse().getSubscriptionId();
+            LOGGER.info("subscriptionId: " + subscriptionId);
+            client.unSubscribeChange(subscriptionId);
+        }
     }
-
-
 }
 
