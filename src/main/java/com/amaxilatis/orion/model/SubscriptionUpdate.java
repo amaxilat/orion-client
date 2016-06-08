@@ -4,11 +4,11 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Maps the OrionContextBroker Response Status.
+ * Maps the Object posted by OrionContextBroker in subscriptions.
  *
  * @author Dimitrios Amaxilatis.
  */
-public class SubscriptionResponse implements Serializable {
+public class SubscriptionUpdate implements Serializable {
     String subscriptionId;
     String originator;
     List<OrionContextElementWrapper> contextResponses;
@@ -39,7 +39,7 @@ public class SubscriptionResponse implements Serializable {
 
     @Override
     public String toString() {
-        return "SubscriptionResponse{" +
+        return "SubscriptionUpdate{" +
                 "subscriptionId='" + subscriptionId + '\'' +
                 ", originator='" + originator + '\'' +
                 '}';
