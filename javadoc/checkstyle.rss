@@ -46,20 +46,6 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.SubscriptionResponse.java">com/amaxilatis/orion/model/SubscriptionResponse.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  29
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.util.SensorMLTypes.java">com/amaxilatis/orion/util/SensorMLTypes.java</a>
                 </td>
                 <td>
@@ -252,6 +238,20 @@ under the License.
                 </td>
                 <td>
                   30
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/amaxilat/orion-client/checkstyle.html#com.amaxilatis.orion.model.SubscriptionUpdate.java">com/amaxilatis/orion/model/SubscriptionUpdate.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  29
                 </td>
               </tr>
                           <tr>
