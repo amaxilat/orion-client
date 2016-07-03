@@ -144,12 +144,4 @@
             </plugin>
         </plugins>
     </build>
-
-
-    <distributionManagement>
-        <repository>
-            <id>amaxilatis</id>
-            <url>http://maven.amaxilatis.com/nexus/content/repositories/snapshots</url>
-        </repository>
-    </distributionManagement>
 </project>
