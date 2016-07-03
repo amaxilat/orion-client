@@ -5,7 +5,6 @@ env:
   - secure: Pxhkqtt3w6cZx8kiqsgcZUSxmypLbbwfOlqZuRJIXVcuXda4CQXrMHIxEXkOkvGcjIEnx1GpSBZKUAW4wrW+Hh4sLfVN+WZDfcx0YCKMtzzpXIyzw/0IqCGR+boWOyJLWhdMS6iRgpkJe1ROpuQC36yTKwmpMqhdGbJldfmqfX4+UBY46r+/47aOt2p5ppZer/bcf0vLdbrezCWw8lgoiD94MyCSV0IuiYySCuTzJYPJJC+Wb5LVkS502Hgotr8TyuB7/qLg4iu7wi4Pw1/TKKM6gyJrnzyaRF786rtZBpgnY1rr25XnMEguQjrtC3AA141PLAc9xe3xnMS2LTo98kWtRCaHMcDe8iTFEeMc9jAwe2h/5eCecSkCS1mxUOKX+158C2VGA6IhrZVhn6tMmLO+fhN2vCYmywJm3cMxFB19Z2LgvPMx+AL+Mjk5Q59Xt9YXNrr/BCxI9YpPbySrkoFAacEw7gxU3GzsI5AJaYAVn+s4nOQUPWM0WldOTXSeqUZ9WW4zJXN2E04CG5EDaTD6nKYUOIBDrrdc7dKSlaDCVQdX0VUwaN3pd+GelLMV8TNb1e5G2L4yQazzFsys46zdOJ3Khya+Tigtlok4CkMg1OIUl+m0SK01qz8TYu0U+d0V6LZc01OHLWOmpzPXGu/J2RB6txqwe+rogmqFVOg=
 jdk:
 - oraclejdk8
-script: mvn clean install javadoc:javadoc pmd:pmd checkstyle:checkstyle site:site
+script: mvn clean deploy javadoc:javadoc pmd:pmd checkstyle:checkstyle site:site
 after_success:
 - ".utility/push-javadoc-to-gh-page.sh"
-- mvn clean deploy
