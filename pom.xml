@@ -8,6 +8,7 @@
     <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+
     <name>Orion Context Broker Client for Java</name>
     <description>This is a java client library for the FIWARE Orion Context Broker GE.</description>
     <url>https://github.com/amaxilat/orion-client</url>
@@ -65,25 +66,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.5.1</version>
-                <executions>
-                    <execution>
-                        <id>default-deploy</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <serverId>sparkworks</serverId>
-                    <nexusUrl>http://nexus.sparkworks.net/nexus/content/repositories/snapshots</nexusUrl>
-                    <skipStaging>true</skipStaging>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.18.1</version>
@@ -113,14 +95,42 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>2.16</version>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>1.9</version>
+                <configuration>
+                    <verbose>false</verbose>
+                    <addSvnKeyWords>true</addSvnKeyWords>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>first</id>
+                        <goals>
+                            <goal>update-file-header</goal>
+                        </goals>
+                        <phase>process-sources</phase>
+                        <configuration>
+                            <licenseName>agpl_v3</licenseName>
+                            <sectionDelimiter>%%</sectionDelimiter>
+                            <organizationName>Dimitrios Amaxilatis</organizationName>
+                            <inceptionYear>2015</inceptionYear>
+                            <roots>
+                                <root>src/main/java</root>
+                                <root>src/test</root>
+                            </roots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>sparkworks</id>
-            <url>http://nexus.sparkworks.net/nexus/content/repositories/snapshots</url>
-        </snapshotRepository>
+        <repository>
+            <id>amaxilatis</id>
+            <url>http://maven.amaxilatis.com/nexus/content/repositories/snapshots</url>
+        </repository>
     </distributionManagement>
 </project>

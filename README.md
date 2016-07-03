@@ -64,8 +64,8 @@ To request all available elements of an Orion CB you need to implement something
     
     <repositories>
         <repository>
-            <id>sparkworks</id>
-            <url>http://nexus.sparkworks.net/nexus/content/repositories/snapshots</url>
+            <id>amaxilatis</id>
+            <url>http://maven.amaxilatis.com/nexus/content/repositories/snapshots</url>
         </repository>
     </repositories>
     <dependencies>
