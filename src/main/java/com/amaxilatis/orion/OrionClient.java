@@ -356,6 +356,19 @@ public class OrionClient {
         LOGGER.trace(response);
         return response;
     }
+    public String queryContext(String type, String isPattern, String id,final String attribute) throws IOException {
+        DiscoverContextAvailabilityRequest request = new DiscoverContextAvailabilityRequest();
+        OrionQueryElement element = new OrionQueryElement();
+        element.setType(type);
+        element.setIsPattern(isPattern);
+        element.setId(id);
+        request.getEntities().add(element);
+        request.setAttributes(new ArrayList<String>());
+        request.getAttributes().add(attribute);
+        final String response = postPath("/v1/queryContext/", new ObjectMapper().writeValueAsString(request));
+        LOGGER.trace(response);
+        return response;
+    }
 
     /**
      * Execute a get request to the specified path.

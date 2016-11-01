@@ -38,6 +38,7 @@ import java.util.List;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class DiscoverContextAvailabilityRequest {
     List<OrionQueryElement> entities;
+    List<String> attributes;
 
     public DiscoverContextAvailabilityRequest() {
         entities = new ArrayList<OrionQueryElement>();
@@ -49,5 +50,13 @@ public class DiscoverContextAvailabilityRequest {
 
     public void setEntities(List<OrionQueryElement> entities) {
         this.entities = entities;
+    }
+
+    public List<String> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(List<String> attributes) {
+        this.attributes = attributes;
     }
 }
