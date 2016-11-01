@@ -356,7 +356,8 @@ public class OrionClient {
         LOGGER.trace(response);
         return response;
     }
-    public String queryContext(String type, String isPattern, String id,final String attribute) throws IOException {
+
+    public String queryContext(String type, String isPattern, String id, final String attribute) throws IOException {
         DiscoverContextAvailabilityRequest request = new DiscoverContextAvailabilityRequest();
         OrionQueryElement element = new OrionQueryElement();
         element.setType(type);
@@ -381,7 +382,7 @@ public class OrionClient {
         final Entity payload = Entity.json(requestString);
         LOGGER.debug(requestString);
         LOGGER.debug(payload);
-        final Response response = getClientForPath(path).post(payload);
+        final Response response = getClientForPath(path, 0, true).post(payload);
 
         LOGGER.debug("status: " + response.getStatus());
         LOGGER.debug("headers: " + response.getHeaders());
@@ -401,7 +402,7 @@ public class OrionClient {
         final Entity payload = Entity.json(requestString);
         LOGGER.debug(requestString);
         LOGGER.debug(payload);
-        final Response response = getClientForPath(path).post(payload);
+        final Response response = getClientForPath(path, 0, true).post(payload);
 
         LOGGER.debug("status: " + response.getStatus());
         LOGGER.debug("headers: " + response.getHeaders());
@@ -428,7 +429,7 @@ public class OrionClient {
      * @return the response string from the server.
      */
     private String getPath(final String path, final long offset) {
-        final Response response = getClientForPath(path, offset).get();
+        final Response response = getClientForPath(path, offset, false).get();
 
         LOGGER.debug("status: " + response.getStatus());
         LOGGER.debug("headers: " + response.getHeaders());
@@ -448,7 +449,7 @@ public class OrionClient {
         LOGGER.debug(entity);
         final Entity payload = Entity.json(entity);
         LOGGER.debug(payload);
-        final Response response = getClientForPath(path).post(payload);
+        final Response response = getClientForPath(path, 0, true).post(payload);
         LOGGER.debug("status: " + response.getStatus());
         LOGGER.debug("headers: " + response.getHeaders());
         final String responseString = response.readEntity(String.class);
@@ -478,7 +479,7 @@ public class OrionClient {
      * @return a client to execute an http request.
      */
     private Invocation.Builder getClientForPath(final String path) {
-        return getClientForPath(path, 0);
+        return getClientForPath(path, 0, false);
     }
 
     /**
@@ -488,7 +489,7 @@ public class OrionClient {
      * @param offset the offset for a list response.
      * @return a client to execute an http request.
      */
-    private Invocation.Builder getClientForPath(final String path, final long offset) {
+    private Invocation.Builder getClientForPath(final String path, final long offset, final boolean content) {
         Client client = ClientBuilder.newClient();
 
         LOGGER.debug("path: " + path);
@@ -502,11 +503,17 @@ public class OrionClient {
             LOGGER.debug("Offset:" + offset);
             webTarget = webTarget.queryParam("offset", offset);
         }
-
-        final Invocation.Builder tmpClient = webTarget.request(MediaType.APPLICATION_JSON_TYPE)
-                .header("Content-Type", "application/json")
-                .header("Accept", "application/json")
-                .header("X-Auth-Token", token);
+        final Invocation.Builder tmpClient;
+        if (content) {
+            tmpClient = webTarget.request(MediaType.APPLICATION_JSON_TYPE)
+                    .header("Content-Type", "application/json")
+                    .header("Accept", "application/json")
+                    .header("X-Auth-Token", token);
+        } else {
+            tmpClient = webTarget.request(MediaType.APPLICATION_JSON_TYPE)
+                    .header("Accept", "application/json")
+                    .header("X-Auth-Token", token);
+        }
 
         if (service != null) {
             tmpClient.header("Fiware-Service", service);
