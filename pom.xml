@@ -128,9 +128,10 @@
 
 
     <distributionManagement>
-        <repository>
+        <snapshotRepository>
             <id>amaxilatis</id>
-            <url>http://maven.amaxilatis.com/nexus/content/repositories/snapshots</url>
-        </repository>
+            <url>http://maven.amaxilatis.com/repository/amaxilatis/</url>
+        </snapshotRepository>
     </distributionManagement>
+
 </project>
