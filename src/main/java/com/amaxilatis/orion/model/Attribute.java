@@ -28,7 +28,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,14 +41,14 @@ import java.util.List;
 public class Attribute implements Serializable {
     String name;
     String type;
-    String value;
+    Object value;
     List<Metadata> metadatas;
 
     public Attribute() {
         //required for object mapper
     }
 
-    public Attribute(final String name, final String type, final String value) {
+    public Attribute(final String name, final String type, final Object value) {
         this.name = name;
         this.type = type;
         this.value = value;
@@ -63,7 +62,7 @@ public class Attribute implements Serializable {
         return type;
     }
 
-    public String getValue() {
+    public Object getValue() {
         return value;
     }
 
@@ -79,7 +78,7 @@ public class Attribute implements Serializable {
         this.type = type;
     }
 
-    public void setValue(final String value) {
+    public void setValue(final Object value) {
         this.value = value;
     }
 
@@ -93,7 +92,6 @@ public class Attribute implements Serializable {
         return "Attribute{" +
                 "name='" + name + '\'' +
                 ", type='" + type + '\'' +
-                ", value='" + value + '\'' +
                 '}';
     }
 }
