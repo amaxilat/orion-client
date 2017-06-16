@@ -98,7 +98,7 @@ public class OrionClient {
     }
 
     public static Attribute createAttributeWithMetadata(
-            final String name, final String type, final String value,
+            final String name, final String type, final Object value,
             List<Metadata> metadatas) {
         final Attribute attribute = new Attribute(name, type, value);
         attribute.setMetadatas(metadatas);
