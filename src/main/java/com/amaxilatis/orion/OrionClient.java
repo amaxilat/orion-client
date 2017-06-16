@@ -54,7 +54,7 @@ public class OrionClient {
     private String service;
     private String servicePath;
 
-    public static Attribute createAttribute(String name, String type, String value) {
+    public static Attribute createAttribute(String name, String type, Object value) {
         return new Attribute(name, type, value);
     }
 
@@ -67,7 +67,7 @@ public class OrionClient {
      * @param id    the id metadata.
      * @return an Orion Attribute Map.
      */
-    public static Attribute createAttributeWithMetadata(String name, String type, String value, final String id) {
+    public static Attribute createAttributeWithMetadata(String name, String type, Object value, final String id) {
         return createAttributeWithMetadata(name, type, value, "ID", "string", id);
     }
 
@@ -80,7 +80,7 @@ public class OrionClient {
      * @param date  the time instant to be added.
      * @return an Orion Attribute Map.
      */
-    public static Attribute createAttributeWithTimeInstant(String name, String type, String value, final Date date) {
+    public static Attribute createAttributeWithTimeInstant(String name, String type, Object value, final Date date) {
         return createAttributeWithMetadata(name, type, value, "TimeInstant", "ISO8601", df.format(date));
     }
 
@@ -93,7 +93,7 @@ public class OrionClient {
      * @param code  the unit of measurement to be added.
      * @return an Orion Attribute Map.
      */
-    public static Attribute createAttributeWithCode(String name, String type, String value, final String code) {
+    public static Attribute createAttributeWithCode(String name, String type, Object value, final String code) {
         return createAttributeWithMetadata(name, type, value, "code", "", code);
     }
 
@@ -106,7 +106,7 @@ public class OrionClient {
     }
 
     public static Attribute createAttributeWithMetadata(
-            final String name, final String type, final String value,
+            final String name, final String type, final Object value,
             final String metadataName, final String metadataType, final String metadataValue) {
         final Attribute attribute = createAttribute(name, type, value);
 
